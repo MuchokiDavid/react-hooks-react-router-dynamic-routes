@@ -9,11 +9,15 @@ function MoviesPage({ movies }) {
   return (
     <div>
       <MoviesList movies={movies} />
-      {/* 
+      <Route  exact path= {match.url}>
+        {/* Adding code to show a message to the user to select a movie if they haven't yet */}
+        <h3>Chose movie from the list</h3>
+      </Route>
+      <Route path={`${match.url}/:movieId`}>
+        {/* 
         we can use the current URL from the `match` object as part of the path;
         this will generate a url like "/movies/:movieId"
       */}
-      <Route path={`${match.url}/:movieId`}>
         <MovieShow movies = {movies}/>
       </Route>
     </div>
